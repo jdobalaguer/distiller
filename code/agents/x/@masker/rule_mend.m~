@@ -14,8 +14,9 @@ function rule_mend(obj)
         maps = (obj.maps == i_rule);
         mask = (errr & maps);
         
-        obj.board_print({sprintf('mend stoc %d before',i_rule),sprintf('mend rule %d before',i_rule)}, ...
-                        {stoc                                 ,rule                                 });
+        obj.board_print({sprintf('mend stoc %d before',i_rule),}
+        stoc);
+        obj.board_print(,rule);
         stoc(mask) = 0;
         rule(mask) = inf;
         obj.board_print(sprintf('mend stoc %d after ',i_rule),stoc);

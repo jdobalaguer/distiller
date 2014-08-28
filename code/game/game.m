@@ -115,7 +115,9 @@ classdef game < matlab.mixin.Copyable % handle + copyable
         %% p-methods
         function print(obj)
             cprintf([1,0,0],'game : \n');
-            disp(obj.status);
+            txt = num2str(obj.status);
+            for i = 1:size(txt,1), fprintf([txt(i,:),'\n']); end
+            fprintf('\n');
         end
         
         function plot(obj)

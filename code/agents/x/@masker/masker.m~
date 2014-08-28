@@ -5,14 +5,13 @@ classdef masker < matlab.mixin.Copyable % handle + copyable
     
     %% diagram
     %{
-        1       PREDICTION
-    V   1.1     learn (key,rule) pairs, learn stocasticity
-        1.2     learn the effect of actions causally
-    
-        2.      TRANSFER & GENERALISATION
-        2.1     all stays the same unless otherwise specified (simplest explanation)
-        2.2     [1,1] is a combination of [1,0] and [0,1]
+        1       predict next state
+        1.1     learn (key,rule) pairs, learn stocasticity
+        1.2     learn causally (ie through actions) that 
+        2.      transfer
+        2.1     transfer that a token will be the same one on the next step (unless specified ohterwise).
     %}
+    
     
     %% properties
     properties

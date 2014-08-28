@@ -9,13 +9,14 @@ function rule_pred(obj)
         keys = obj.k_rule{i_rule};
         stoc = obj.s_rule{i_rule};
         rule = obj.r_rule{i_rule};
-%         k_mask = ~isnan(keys);
+        k_mask = ~isnan(keys);
         s_mask = (stoc == 0);
         r_mask = ~isnan(rule);
-%         p_mask = ~isnan(pred) & ~isinf(pred);
+        p_mask = ~isnan(pred) & ~isinf(pred);
         assert(all(rule(s_mask) == Inf), 'masker: rule_pred: error 2.');
         if all(isequalni(obj.past,keys))
             assert(all(isequalni(pred,rule)), 'masker: rule_pred: error 3.');
+            assert(~any(isinf(pred) &  ))
             maps(r_mask) = i_rule;
             pred(r_mask) = rule(r_mask);
 %             keys
@@ -31,6 +32,8 @@ function rule_pred(obj)
     obj.maps = maps;
     obj.pred = pred;
     
-    obj.board_print({'past', 'pres',   'pred',  'maps'  },...
-                    {obj.past,obj.pres,obj.pred,obj.maps});
+    obj.board_print('past',obj.past);
+    obj.board_print('pres',obj.pres);
+    obj.board_print('pred',obj.pred);
+    obj.board_print('maps',obj.maps);
 end
