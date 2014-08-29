@@ -1,5 +1,10 @@
 
+% CONVEX.BOARD_PRINT(texts,boards)
 % print board
+
+%% warnings
+
+%% function
 function board_print(obj,texts,boards)
 
     % assert and default

@@ -10,7 +10,7 @@ try
     % [y] = Yactor
     jb('o ¬ o : default();');
     jb('g ¬ g : game(o);');
-    jb('x ¬ x : agent_x(''convex'',o);');   ... "distil" "masker" "convex"
+    jb('x ¬ x : agent_x(''distil'',o);');   ... "distil" "masker" "convex"
     jb('y ¬ y : agent_y(''xplore'',o);');   ... "humane" "random" "xplore"
 
     %% variables

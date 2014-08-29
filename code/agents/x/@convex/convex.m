@@ -2,6 +2,16 @@
 classdef convex < matlab.mixin.Copyable % handle + copyable
     % CONVEX()
     % convex model
+    % see also convex.convex
+    %          convex.step
+    %          convex.board_set
+    %          convex.board_print
+    %          convex.rule_asse
+    %          convex.rule_adds
+    %          convex.rule_pred
+    %          convex.rule_errr
+    %          convex.rule_disc
+    %          convex.rule_print
     
     %% novelties
     
@@ -25,6 +35,9 @@ classdef convex < matlab.mixin.Copyable % handle + copyable
     % this now doesnt mean that a particular rule is wrong
     % all rules with matching keys need to be updated
     
+    % 5 rule_print
+    % function created to print keys + rules (sets of 4 boards)
+    
     %% diagram
     %{
         0       COMPRESSION
@@ -36,7 +49,6 @@ classdef convex < matlab.mixin.Copyable % handle + copyable
     properties
         % options
         options
-        functns
         
         % time
         past;           ... time past
@@ -48,24 +60,26 @@ classdef convex < matlab.mixin.Copyable % handle + copyable
             
         % rule storage
         keys;         ... prediction keys
-        rule;         ... prediction rule [0,s,d,1]
+        rule;         ... prediction rule    (columns [0,s,d,1])
     end
     
     methods
         %% constructor
         function obj = convex(options)
+            % obj = CONVEX.CONVEX(options)
+            % constructor of the convex class
+            
             obj.options = options;
-            obj.functns = jb_binarytable(2);
             
             obj.past    =   nan(options.n_memory,1); % view
             obj.pres    =   nan(options.n_memory,1);
             
             obj.maps    =   nan(options.n_memory,1); % pred
             obj.pred    =   nan(options.n_memory,1);
-            obj.errr    = false(options.n_memory,1);
+            obj.errr    =   false(options.n_memory,1);
             
-            obj.keys    = {};
-            obj.rule    = {};
+            obj.keys    =   {};
+            obj.rule    =   {};
         end
      
         %% methods
