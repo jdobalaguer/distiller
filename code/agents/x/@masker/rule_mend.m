@@ -18,11 +18,10 @@ function rule_mend(obj)
                         {stoc                                 ,rule                                 });
         stoc(mask) = 0;
         rule(mask) = inf;
-        obj.board_print(sprintf('mend stoc %d after ',i_rule),stoc);
-        obj.board_print(sprintf('mend rule %d after ',i_rule),rule);
+        obj.board_print({sprintf('mend stoc %d after ',i_rule),sprintf('mend rule %d after ',i_rule)}, ...
+                        {stoc                                 ,rule                                 });
         
         obj.errr = (errr & ~maps);
-        
         obj.k_rule{i_rule} = keys;
         obj.s_rule{i_rule} = stoc;
         obj.r_rule{i_rule} = rule;

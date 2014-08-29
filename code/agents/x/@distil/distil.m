@@ -1,6 +1,6 @@
 
-classdef distiller < matlab.mixin.Copyable % handle + copyable
-    %% DISTILLER()
+classdef distil < matlab.mixin.Copyable % handle + copyable
+    %% DISTIL()
     % distiller agent
     
     %% NOTE
@@ -64,7 +64,7 @@ classdef distiller < matlab.mixin.Copyable % handle + copyable
     
     %% METHOD
     methods
-        function obj = distiller(options)
+        function obj = distil(options)
             % default options
             obj.options          = options;
             % matrices

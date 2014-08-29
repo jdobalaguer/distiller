@@ -17,12 +17,12 @@ function player = agent_y(varargin)
 
     %% choose
     switch(name)
-        case'human'
-            player = human(options);
+        case 'humane'
+            player = humane(options);
         case 'random'
             player = random(options);
-        case 'explorer'
-            player = explorer(options);
+        case 'xplore'
+            player = xplore(options);
         otherwise
             error('agent_y: unknown "%s"',name);
     end

@@ -1,5 +1,5 @@
 
-classdef human < matlab.mixin.Copyable % handle + copyable
+classdef humane < matlab.mixin.Copyable % handle + copyable
     
     %% PROPERTY
     properties
@@ -11,7 +11,7 @@ classdef human < matlab.mixin.Copyable % handle + copyable
     
     %% METHOD
     methods
-        function obj = human(options)
+        function obj = humane(options)
             obj.options = options;
         end
         

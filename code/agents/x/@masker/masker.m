@@ -3,6 +3,24 @@ classdef masker < matlab.mixin.Copyable % handle + copyable
     %% masker()
     % masker model
     
+    %% novelties
+    
+    % 1 masks
+    % rule key accept a mask (ie, generalized rules).
+    % still not checking for not convexity (ie exceptions to generalization)
+    
+    % 2 printer
+    % improved printing. accepts cells now (multiple boards)
+    
+    % 3 p.i.n.a.p.
+    % present is not a prediction (anymore)
+    % starting from a step earlier, we forget a s supposition.
+    % we don't suppose that future will be in general like the present.
+    
+    % 4 stochasticity and infinite values
+    % stochasticy vector s_rule added, helps to disentangle unknown from impossible.
+    % infinite values used in r_rule as stochastic values
+    
     %% diagram
     %{
         1       PREDICTION

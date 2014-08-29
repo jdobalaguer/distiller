@@ -1,5 +1,5 @@
 
-classdef explorer < matlab.mixin.Copyable % handle + copyable
+classdef xplore < matlab.mixin.Copyable % handle + copyable
     %% WARNING
     %#ok<*INUSD,*INUSL,*AGROW,*ASGLU>
     
@@ -12,7 +12,7 @@ classdef explorer < matlab.mixin.Copyable % handle + copyable
     
     %% METHOD
     methods
-        function obj = explorer(options)
+        function obj = xplore(options)
             obj.options = options;
             
             % action repertoire
@@ -28,13 +28,8 @@ classdef explorer < matlab.mixin.Copyable % handle + copyable
         end
 
         %% set action repertoire
-        function action = set_possible_actions(obj,n_action)
-            action = [0;1];
-            for i_action = 2:n_action
-                s_action = size(action,1);
-                action = [zeros(s_action,1) , action ; ones(s_action,1) , action];
-            end
-            obj.actions = action;
+        function set_possible_actions(obj,n_action)
+            obj.actions = jb_binarytable(n_action);
         end
 
         

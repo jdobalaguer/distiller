@@ -17,10 +17,12 @@ function player = agent_x(varargin)
 
     %% choose
     switch(name)
-        case'distiller'
-            player = distiller(options);
+        case'distil'
+            player = distil(options);
         case 'masker'
             player = masker(options);
+        case 'convex'
+            player = convex(options);
         otherwise
             error('agent_x: unknown "%s"',name);
     end
