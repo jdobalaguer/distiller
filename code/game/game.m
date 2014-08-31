@@ -12,7 +12,7 @@ classdef game < matlab.mixin.Copyable % handle + copyable
     end
     
     %% WARNING
-    %#ok<*CPROP,*MANU>
+    %#ok<*CPROP,*MANU,*FXSET>
     
     %% METHOD
     methods
@@ -27,48 +27,43 @@ classdef game < matlab.mixin.Copyable % handle + copyable
         
         %% initalize
         function initialize(obj)
-            obj.status   = false(obj.options.size); obj.status(1,:) = true;
+            obj.status   = false(obj.options.size);
+            obj.status(1,:) = true;
+            obj.status(2,:) = true;
             obj.reward   = 0;
             obj.terminal = true;
         end
         
         %% step
-        function [status,reward,terminal] = step(obj,actions)
+        function [status,reward,terminal] = step(obj,u_action)
             % assert
-            n_action = obj.options.size(2);
-            assert(all(size(actions)==[1,n_action]),'game: error. action wrong size');
+            n_action = obj.options.n_action;
+            n_row    = obj.options.size(2);
+            assert(all(size(u_action)==[1,n_action]),'game: error. action wrong size');
             
             status   = obj.status;
             reward   = 0;
             terminal = false;
             
             % get rows for each action
-            rows = nan(1,n_action);
-            for action = 1:n_action
-                rows(action) = find(obj.status(:,action),1,'last');
+            u_row = nan(1,n_row);
+            for i_row = 1:n_row
+                u_row(i_row) = find(obj.status(:,i_row),1,'last');
             end
             
-            % board full (restart)
-            if any(rows == obj.options.size(1))
+            % board empty / full(restart)
+            if any(u_row == 1) || any(u_row == obj.options.size(1))
                 obj.initialize();
-                status   = obj.status;
-                terminal = obj.terminal;
-                actions  = false(1,n_action);
+                return;
             end
-            
             % apply actions
-            for action = find(actions)
-                row    = rows(action);
-                
-                % action violation (row full)
-                if row == obj.options.size(1)
-                    status = obj.status;
-                    terminal = true;
-                    break;
+            for i_action = find(u_action)
+                remove = floor((i_action - 1) ./ n_row);
+                column = mod(i_action - 1,n_row) + 1;
+                row    = u_row(column);
+                if remove,  status(row,  column) = false;
+                else        status(row+1,column) = true;
                 end
-                
-                % set token
-                status(row+1,action) = true; 
             end
             
             % save state and terminal

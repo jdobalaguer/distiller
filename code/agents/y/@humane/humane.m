@@ -18,7 +18,7 @@ classdef humane < matlab.mixin.Copyable % handle + copyable
         function action = step(obj, status, reward, terminal)
             n_action = obj.options.size(2);
             action   = [];
-            while any(size(action)~=[1,n_action])
+            while any(size(action)~=[1,2*n_action])
                 action = str2num(input('action: ','s'));
             end
             action = logical(action);
