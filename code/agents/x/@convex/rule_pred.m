@@ -22,7 +22,7 @@ function rule_pred(obj)
         keys = obj.keys{i_rule};
         rule = obj.rule{i_rule};
         
-        if all(past(:) == keys(:))
+        if obj.key_match(past,keys)
             % set maps
             maps(:,i_rule) = sum(rule == false,2);
             
@@ -36,10 +36,6 @@ function rule_pred(obj)
     obj.pred = pred;
     
     % render the prediction
-    outs = [false(n_memory,1) , pres , ~pres , true(n_memory,1)];
-    rend = double(pred);
-    rend(~rule) = nan;
-    rend = rend .* outs;
-    rend = nanmean(rend,2);
+    rend = obj.rule_rend(rule,past);
     obj.board_print('rend',rend);
 end

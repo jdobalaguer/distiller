@@ -6,6 +6,8 @@ classdef convex < matlab.mixin.Copyable % handle + copyable
     %          convex.step
     %          convex.board_set
     %          convex.board_print
+    %          convex.key_gen
+    %          convex.key_match
     %          convex.rule_asse
     %          convex.rule_adds
     %          convex.rule_pred

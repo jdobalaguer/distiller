@@ -15,7 +15,7 @@ function rule_disc(obj)
         keys = obj.keys{i_rule};
         rule = obj.rule{i_rule};
         
-        if all(past(:) == keys(:))
+        if obj.key_match(past,keys)
             % print rule
             obj.rule_print(sprintf('mend %d before -',i_rule),keys,rule);
             
