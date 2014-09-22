@@ -56,6 +56,10 @@ classdef game < matlab.mixin.Copyable % handle + copyable
                 obj.initialize();
                 return;
             end
+            
+            % remove counter-actions
+            u_action(repmat(all(reshape(u_action,[0.5*obj.options.n_action,2]),2),[2,1])) = 0;
+            
             % apply actions
             for i_action = find(u_action)
                 remove = floor((i_action - 1) ./ n_row);

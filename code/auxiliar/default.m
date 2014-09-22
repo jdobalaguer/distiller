@@ -15,8 +15,8 @@ function options = default(options)
     jb('options.n_time   ¬ options.n_time   :    2');
     
     %% assert
-    assert(any(options.n_action == (1:2)*options.size(2)), 'default: error. n_action is wrong');
-    assert(prod(options.size) == options.n_status, 'default: error. n_status is wrong');
+    assert(any(options.n_action == (1:2)*options.size(2)),          'default: error. n_action is wrong');
+    assert(prod(options.size) == options.n_status,                  'default: error. n_status is wrong');
     assert(options.n_status + options.n_action == options.n_memory, 'default: error. n_memory is wrong');
     
 end
